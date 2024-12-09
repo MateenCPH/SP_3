@@ -14,13 +14,15 @@ function Homepage() {
   console.log(meals);
 
   return (
-    <div className="max-w-[1000px] m-auto">
+    <div>
       <Header />
-      <h1 className="text-center text-3xl my-5">Homepage</h1>
+      <h1 className="text-center text-3xl my-8">Find inspiration do some of our best recipes</h1>
 
-      <div className="flex flex-wrap gap-4">
-        {meals && meals.map((meals) => (
-             <MealsCard key={meals.id} meal={meals} />
+
+      <h2 className="text-2xl my-4 mx-1">Recommended For You</h2>
+      <div className="flex flex-wrap gap-4 justify-center">
+        {meals && Object.values(meals).map((meals) => (
+             <MealsCard key={meals.mealId} meal={meals} />
              ))}
       </div>
     </div>

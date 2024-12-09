@@ -6,8 +6,9 @@ import Rating from '../assets/Rating.jsx';
 const MealsCard = ({ meal }) => {
 
     return ( 
+        meal ?
         <>
-            <Link to={`/meals/${meal.id}`}>
+            <Link to={`/details/${meal.mealId}`}>
                 <div className="flex flex-col justify-between rounded-md bg-Secondary text-black w-80 h-40 p-3">
                     <div className='flex flex-row justify-between'>
                         <div>
@@ -26,7 +27,8 @@ const MealsCard = ({ meal }) => {
                 </div>
             </Link>
         </>
-     );
+        : <div>loading...</div>
+     ) 
 }
  
 export default MealsCard;
