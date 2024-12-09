@@ -1,21 +1,23 @@
-import './App.css'
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Admin from "./pages/Admin";
+import Details from "./pages/Details";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
 
 function App() {
-
   return (
     <>
-    <header>
-      Her er vores header med søgefelt og forskellige knapper
-    </header>
-      <h1>Meals app</h1>
-      <p>Her</p>
-      <p>er</p>
-      <p>en</p>
-      <p>hel</p>
-      <p>masse</p>
-      <p>måltider</p>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/details" element={<Details />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
