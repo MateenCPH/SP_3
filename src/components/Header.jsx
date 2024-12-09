@@ -14,13 +14,13 @@ function Header() {
 
   return (
     <>
-      <header className="mb-2 mt-2 flex flex-row justify-between">
+      <header className="my-2 flex flex-row justify-between items-center">
         <Link to="/">
           <HomeLogo className="h-8 bg-Theme" />
         </Link>
-        <div className="p-2 rounded bg-Secondary flex flex-row">
+        <div className="p-2 max-w-80 flex flex-row justify-between rounded bg-Secondary ">
           <input
-            className="bg-transparent"
+            className="bg-transparent focus:outline-none outline-none"
             type="text"
             name="search"
             placeholder="Search..."
