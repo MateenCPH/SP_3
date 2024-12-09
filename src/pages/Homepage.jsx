@@ -17,11 +17,17 @@ function Homepage() {
   
 
   return (
-    <div>
-      <h1>Homepage</h1>
+    <div className="max-w-[1000px] m-auto">
+      <h1 className="text-center text-3xl my-5">Homepage</h1>
 
-      <MealsCard />
-    </div>
+      <div className="flex flex-wrap gap-4">
+
+        { meals && meals.map((meals) => (
+          <MealsCard key={meals.id} meal={meals} />
+        ))}
+      </div>
+
+      </div>
   );
 }
 
