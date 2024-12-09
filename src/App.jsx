@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 function App() {
   return (
     <>
-    <div className="max-w-[62.5rem] m-auto p-2">
+    <div className="max-w-[63rem] m-auto p-2">
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
