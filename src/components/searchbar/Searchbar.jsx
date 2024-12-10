@@ -3,6 +3,7 @@ import "./Searchbar.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SearchLogo from "../../assets/SearchLogo";
+import Rating from "../../assets/Rating";
 
 const Container = styled.div`
   display: flex;
@@ -10,10 +11,11 @@ const Container = styled.div`
 `;
 
 const InputContainer = styled.div`
-  width: fit-content;
   display: flex;
+  max-width: 500px;
+  width: 100%;
+  min-width: 400px;
   align-items: center;
-  flex-wrap: wrap;
   gap: 8px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -65,7 +67,9 @@ const MealName = styled.p`
 const MealDescription = styled.p``;
 
 const MealRating = styled.p`
-color: black;
+  display: flex;
+  flex-direction: row;
+  color: #f09136;
 `;
 
 const Span = styled.span`
@@ -150,7 +154,9 @@ function Searchbar({ meals }) {
                     <Span>
                       <MealName>{meal.mealName}</MealName>
                       <MealDescription>{meal.mealDescription}</MealDescription>
-                      <MealRating>{meal.mealRating}</MealRating>
+                      <MealRating>
+                        {meal.mealRating} <Rating />
+                      </MealRating>
                     </Span>
                   </ListItem>
                 </Link>
