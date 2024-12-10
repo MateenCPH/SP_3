@@ -3,14 +3,9 @@ import SearchLogo from "../assets/SearchLogo";
 import UserLogo from "../assets/UserLogo";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Searchbar from "./searchbar/Searchbar";
 
-function Header({loggedIn, username}) {
-  const [burger, setBurger] = useState("");
-
-  const handleChange = (e) => {
-    setBurger(e.target.value);
-    console.log(burger);
-  };
+function Header({ loggedIn, username, meals }) {
 
   return (
     <>
@@ -18,18 +13,9 @@ function Header({loggedIn, username}) {
         <Link to="/">
           <HomeLogo className="h-8 bg-Theme" />
         </Link>
-        <div className="p-2 max-w-80 flex flex-row justify-between rounded bg-Secondary p-">
-          <input
-            className="bg-transparent focus:outline-none outline-none"
-            type="text"
-            name="search"
-            placeholder="Search..."
-            onChange={handleChange}
-          />
-          <SearchLogo />
-        </div>
+        <Searchbar meals={meals} />
 
-         {/* User section */}
+        {/* User section */}
         <div className="flex items-center">
           {loggedIn ? (
             <div className="flex items-center gap-2">
