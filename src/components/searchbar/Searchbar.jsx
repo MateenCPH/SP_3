@@ -1,27 +1,15 @@
 import { useState, useEffect } from "react";
 import "./Searchbar.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Searchbar() {
+function Searchbar({ meals }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [allMeals, setAllMeals] = useState([]);
   const [filteredMeals, setFilteredMeals] = useState([]);
   const navigate = useNavigate();
 
-  //https://meals.nerdshub.dk/api/meals
-
   useEffect(() => {
-    const fetchMeals = async () => {
-      try {
-        const response = await fetch("https://meals.nerdshub.dk/api/meals");
-        const data = await response.json();
-        setAllMeals(data);
-      } catch (err) {
-        console.err("Error fetching meals: ", err);
-      }
-    };
-
-    fetchMeals();
+    setAllMeals(meals);
   }, []);
 
   useEffect(() => {
@@ -36,9 +24,10 @@ function Searchbar() {
     }
   }, [searchTerm, allMeals]);
 
-  const handleMealClick = (mealId) => {
-    navigate(`/details/${mealId}`)
-  }
+  const handleMealClick = () => {
+    setSearchTerm("");
+    setFilteredMeals([]);
+  };
 
   return (
     <div className="user-search-container">
@@ -54,15 +43,17 @@ function Searchbar() {
           {/* Search suggestions  */}
           <ul className="suggestions-list">
             {filteredMeals?.map((meal) => (
-              <li key={meal.mealId} onClick={() => handleMealClick(meal.mealId)}>
-                <img
-                  src="https://img.freepik.com/free-photo/exploding-burger-with-vegetables-melted-cheese-black-background-generative-ai_157027-1751.jpg"
-                  alt={`${meal.mealName} ${meal.mealDescription}`}
-                />
-                <span>
-                  {meal.mealName} {meal.mealDescription}
-                </span>
-              </li>
+              <Link to={`/details/${meal.mealId}`} state={{ meal: meal }}>
+                <li key={meal.mealId} onClick={handleMealClick}>
+                  <img
+                    src="https://img.freepik.com/free-photo/exploding-burger-with-vegetables-melted-cheese-black-background-generative-ai_157027-1751.jpg"
+                    alt={`${meal.mealName} ${meal.mealDescription}`}
+                  />
+                  <span>
+                    {meal.mealName} {meal.mealDescription}
+                  </span>
+                </li>
+              </Link>
             ))}
           </ul>
         </div>

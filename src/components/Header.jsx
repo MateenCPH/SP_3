@@ -3,8 +3,9 @@ import SearchLogo from "../assets/SearchLogo";
 import UserLogo from "../assets/UserLogo";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Searchbar from "./searchbar/Searchbar";
 
-function Header() {
+function Header({meals}) {
   const [burger, setBurger] = useState("");
 
   const handleChange = (e) => {
@@ -18,17 +19,8 @@ function Header() {
         <Link to="/">
           <HomeLogo className="h-8 bg-Theme" />
         </Link>
-        <div className="p-2 max-w-80 flex flex-row justify-between rounded bg-Secondary ">
-          <input
-            className="bg-transparent focus:outline-none outline-none"
-            type="text"
-            name="search"
-            placeholder="Search..."
-            onChange={handleChange}
-          />
-          <SearchLogo />
-        </div>
-          <UserLogo />
+        <Searchbar meals={meals}/>
+        <UserLogo />
       </header>
     </>
   );

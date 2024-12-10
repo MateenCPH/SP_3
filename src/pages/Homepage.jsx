@@ -6,7 +6,6 @@ function Homepage({meals}) {
 
   return (
     <div>
-      <Header />
       <h1 className="text-center text-4xl my-8">Find inspiration do some of our best recipes</h1>
 
       <h2 className="text-2xl my-4 mx-1">Recommended For You</h2>
