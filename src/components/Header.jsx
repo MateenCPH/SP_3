@@ -1,16 +1,15 @@
-import HomeLogo from "../assets/homeLogo";
 import SearchLogo from "../assets/SearchLogo";
 import UserLogo from "../assets/UserLogo";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import Searchbar from "./searchbar/Searchbar";
+import HomeLogo from "../assets/HomeLogo";
 
 function Header({ loggedIn, username, meals, logout }) {
   return (
     <>
       <header className="my-2 flex flex-row justify-between items-center">
         <Link to="/">
-          <HomeLogo className="h-8 bg-Theme" />
+          <HomeLogo />
         </Link>
         <Searchbar meals={meals} />
 
