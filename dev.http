@@ -1,0 +1,23 @@
+
+POST https://meals.nerdshub.dk/api/auth/register/
+
+{
+    "username": "user",
+    "password": "123"
+
+}
+
+
+###
+POST https://meals.nerdshub.dk/api/auth/login
+
+{
+
+    "username": "user",
+    "password": "123"
+
+}
+
+###
+
+

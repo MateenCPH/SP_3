@@ -6,6 +6,15 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 
 function App() {
+
+  const login = (user, pass) => {
+    facade.login(user,pass)
+    .then(() => setLoggedIn(true))
+    console.log(user,pass)
+  
+  } 
+
+
   return (
     <>
     <div className="max-w-[63rem] m-auto p-2">
