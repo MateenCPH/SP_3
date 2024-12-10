@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchData } from "./util/persistence";
+import facade from "./util/apiFacade";
+
 
 import "./App.css";
 
@@ -11,12 +13,22 @@ import Login from "./pages/Login";
 
 function App() {
 
-  const login = (user, pass) => {
-    facade.login(user,pass)
-    .then(() => setLoggedIn(true))
-    console.log(user,pass)
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
   
-  } 
+
+  const login = (user, pass) => {
+    facade
+      .login(user, pass)
+      .then(() => {
+        setLoggedIn(true);
+        setUsername(user);
+      })
+      .catch((err) => {
+        console.error("Login failed:", err);
+        alert("Invalid credentials. Please try again.");
+      });
+  };
 
   const [meals, setMeals] = useState([]);
 
@@ -29,9 +41,9 @@ function App() {
     <div className="max-w-[63rem] m-auto p-2">
       <Router>
         <Routes>
-          <Route path="/" element={<Homepage meals={meals} />} />
+          <Route path="/" element={<Homepage meals={meals} loggedIn={loggedIn} username={username} />} />
           <Route path="/details/:id" element={<Details />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login login={login} loggedIn={loggedIn}/>} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </Router>

@@ -4,7 +4,7 @@ import UserLogo from "../assets/UserLogo";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function Header() {
+function Header({loggedIn, username}) {
   const [burger, setBurger] = useState("");
 
   const handleChange = (e) => {
@@ -18,7 +18,7 @@ function Header() {
         <Link to="/">
           <HomeLogo className="h-8 bg-Theme" />
         </Link>
-        <div className="p-2 max-w-80 flex flex-row justify-between rounded bg-Secondary ">
+        <div className="p-2 max-w-80 flex flex-row justify-between rounded bg-Secondary p-">
           <input
             className="bg-transparent focus:outline-none outline-none"
             type="text"
@@ -28,7 +28,20 @@ function Header() {
           />
           <SearchLogo />
         </div>
-          <UserLogo />
+
+         {/* User section */}
+        <div className="flex items-center">
+          {loggedIn ? (
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-bold">{username}</span>
+              <UserLogo />
+            </div>
+          ) : (
+            <Link to="/login">
+              <UserLogo />
+            </Link>
+          )}
+        </div>
       </header>
     </>
   );
