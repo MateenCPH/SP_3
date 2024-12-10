@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchData } from "./util/persistence";
+import facade from "./util/apiFacade";
+
 
 import "./App.css";
 
@@ -12,6 +14,24 @@ import Searchbar from "./components/searchbar/Searchbar";
 import Header from "./components/Header";
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  
+
+  const login = (user, pass) => {
+    facade
+      .login(user, pass)
+      .then(() => {
+        setLoggedIn(true);
+        setUsername(user);
+      })
+      .catch((err) => {
+        console.error("Login failed:", err);
+        alert("Invalid credentials. Please try again.");
+      });
+  };
+
   const [meals, setMeals] = useState([]);
 
   useEffect(() => {
@@ -24,11 +44,10 @@ function App() {
         <div className="max-w-[63rem] m-auto p-2">
           <Header meals={meals}/>
           <Routes>
-            <Route path="/" element={<Homepage meals={meals} />} />
+            <Route path="/" element={<Homepage meals={meals} loggedIn={loggedIn} username={username} />} />
             <Route path="/details/:id" element={<Details />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login login={login} loggedIn={loggedIn}/>} />
             <Route path="/admin" element={<Admin />} />
-            <Route path="/test" element={<Searchbar />} />
           </Routes>
         </div>
       </Router>

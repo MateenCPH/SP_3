@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Searchbar from "./searchbar/Searchbar";
 
-function Header({meals}) {
+function Header({loggedIn, username}{meals}) {
   const [burger, setBurger] = useState("");
 
   const handleChange = (e) => {
@@ -19,6 +19,30 @@ function Header({meals}) {
         <Link to="/">
           <HomeLogo className="h-8 bg-Theme" />
         </Link>
+        <div className="p-2 max-w-80 flex flex-row justify-between rounded bg-Secondary p-">
+          <input
+            className="bg-transparent focus:outline-none outline-none"
+            type="text"
+            name="search"
+            placeholder="Search..."
+            onChange={handleChange}
+          />
+          <SearchLogo />
+        </div>
+
+         {/* User section */}
+        <div className="flex items-center">
+          {loggedIn ? (
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-bold">{username}</span>
+              <UserLogo />
+            </div>
+          ) : (
+            <Link to="/login">
+              <UserLogo />
+            </Link>
+          )}
+        </div>
         <Searchbar meals={meals}/>
         <UserLogo />
       </header>
