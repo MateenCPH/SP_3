@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Searchbar from "./searchbar/Searchbar";
 
-function Header({ loggedIn, username, meals }) {
-
+function Header({ loggedIn, username, meals, logout }) {
   return (
     <>
       <header className="my-2 flex flex-row justify-between items-center">
@@ -21,6 +20,12 @@ function Header({ loggedIn, username, meals }) {
             <div className="flex items-center gap-2">
               <span className="text-sm font-bold">{username}</span>
               <UserLogo />
+              <button
+                onClick={logout}
+                className="ml-4 px-2 py-1 bg-Theme text-Primary rounded hover:bg-red-700"
+              >
+                Logout
+              </button>
             </div>
           ) : (
             <Link to="/login">

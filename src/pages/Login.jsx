@@ -7,7 +7,7 @@ import Header from "../components/Header";
 const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   align-items: center;
   justify-content: center;
   
@@ -53,7 +53,7 @@ const Input = styled.input`
   font-size: 16px;
 `;
 
-const Button = styled.button`
+ const Button = styled.button`
   width: 100%;
   padding: 0.5rem;
   background-color: #f09136;
@@ -111,7 +111,6 @@ function Login({ login, loggedIn }) {
 
   return (
     <>
-    <Header/>
     <Container>
       <LeftSide>
         <img src="src/assets/Logo.png" alt="Logo" />

@@ -29,6 +29,12 @@ function App() {
       });
   };
 
+  const logout = () => {
+    facade.logout();
+    setLoggedIn(false);
+    setUsername("");
+  };
+
   const [meals, setMeals] = useState([]);
 
   useEffect(() => {
@@ -39,7 +45,7 @@ function App() {
     <>
       <Router>
         <div className="max-w-[63rem] m-auto p-2">
-          <Header meals={meals} loggedIn={loggedIn} username={username} />
+          <Header meals={meals} loggedIn={loggedIn} username={username} logout={logout} />
           <Routes>
             <Route path="/" element={<Homepage meals={meals} />} />
             <Route path="/details/:id" element={<Details />} />
