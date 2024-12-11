@@ -1,18 +1,32 @@
 import Pensil from "../assets/Pensil";
+import { useNavigate } from "react-router-dom";
+import facade from "../util/apiFacade";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DeleteFunc from "../components/Admin/DeleteFunc";
 
 
-const Admin = ({ meals }) => {
+const Admin = ({ meals, loggedIn }) => {
   const [selectCategory, setSelectCategory] = useState("meals");
   const users = [{id:1, username:"chad", role:"admin"}, {id:2, username:"gary", role:"user"}];
+  const navi = useNavigate(); 
   
   const handleCategory = (e) => {
     setSelectCategory(e.target.value);
   }
 
-  return ( 
+  useEffect(() => {
+    function checkAccess(){
+      if(facade.hasUserAccess("admin", loggedIn)){
+        return true;
+      } else{
+        return navi(`/`, {replace: true})
+      }
+    }
+    checkAccess();
+  }, [loggedIn]);
+
+  return (
     <>
       <h1 className="text-center text-4xl my-8">Admin Panel</h1>
     
@@ -43,7 +57,7 @@ const Admin = ({ meals }) => {
                       <td className=" p-2">{meal.mealName}</td>
                       <td className="text-center p-2">link</td>
                       <td className="text-center p-2"><button><Pensil /></button></td>
-                      <td className="text-center p-2"><button><DeleteFunc /></button></td>
+                      <td className="text-center p-2"><DeleteFunc /></td>
                     </tr>
                   ))}
                 </tbody>

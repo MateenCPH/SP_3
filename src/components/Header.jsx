@@ -3,6 +3,8 @@ import UserLogo from "../assets/UserLogo";
 import { Link } from "react-router-dom";
 import Searchbar from "./searchbar/Searchbar";
 import HomeLogo from "../assets/HomeLogo";
+import TerminalIcon from "../assets/TerminalIcon";
+import facade from "../util/apiFacade";
 
 function Header({ loggedIn, username, meals, logout }) {
   return (
@@ -30,6 +32,11 @@ function Header({ loggedIn, username, meals, logout }) {
             <Link to="/login">
               <UserLogo />
             </Link>
+          )}
+          {facade.hasUserAccess("admin", loggedIn) && (
+              <Link to="/admin">
+                <TerminalIcon />
+              </Link>
           )}
         </div>
       </header>
