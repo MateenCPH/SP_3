@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { getImageForMeal } from "../components/MealsCard";
 
 function Details() {
   const location = useLocation();
@@ -33,7 +34,7 @@ function Details() {
             <div className="flex justify-center">
               <img
                 className="md:w-[30vw] h-[30vh] object-cover"
-                src="https://img.freepik.com/free-photo/exploding-burger-with-vegetables-melted-cheese-black-background-generative-ai_157027-1751.jpg"
+                src={getImageForMeal(meal.mealName)}
                 alt="Image of the food"
               />
             </div>

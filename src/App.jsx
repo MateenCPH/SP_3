@@ -9,8 +9,8 @@ import Admin from "./pages/Admin";
 import Details from "./pages/Details";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
-import Searchbar from "./components/searchbar/Searchbar";
 import Header from "./components/Header";
+import Error404NotFound from "./pages/Error404NotFound";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -45,7 +45,12 @@ function App() {
     <>
       <Router>
         <div className="max-w-[63rem] m-auto p-2">
-          <Header meals={meals} loggedIn={loggedIn} username={username} logout={logout} />
+          <Header
+            meals={meals}
+            loggedIn={loggedIn}
+            username={username}
+            logout={logout}
+          />
           <Routes>
             <Route path="/" element={<Homepage meals={meals} />} />
             <Route path="/details/:id" element={<Details />} />
@@ -54,6 +59,7 @@ function App() {
               element={<Login login={login} loggedIn={loggedIn} />}
             />
             <Route path="/admin" element={<Admin />} />
+            <Route path="*" element={<Error404NotFound />} />
           </Routes>
         </div>
       </Router>
