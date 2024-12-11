@@ -15,6 +15,7 @@ import Header from "./components/Header";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
+  const [meals, setMeals] = useState([]);
 
   const login = (user, pass) => {
     facade
@@ -29,7 +30,6 @@ function App() {
       });
   };
 
-  const [meals, setMeals] = useState([]);
 
   useEffect(() => {
     fetchData("https://meals.nerdshub.dk/api/meals", setMeals, "GET");
@@ -43,11 +43,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage meals={meals} />} />
             <Route path="/details/:id" element={<Details />} />
-            <Route
-              path="/login"
-              element={<Login login={login} loggedIn={loggedIn} />}
-            />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/login" element={<Login login={login} loggedIn={loggedIn} />} />
+            <Route path="/admin" element={<Admin meals={meals} />} />
           </Routes>
         </div>
       </Router>
