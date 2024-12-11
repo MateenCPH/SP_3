@@ -9,10 +9,10 @@ const MealsCard = ({ meal }) => {
         <>
             <Link to={`/details/${meal.mealId}`} state={{ meal: meal }}>
                 <div className="flex flex-col justify-between rounded-md bg-Secondary text-black w-80 h-40 p-3">
-                    <div className='flex flex-row justify-between'>
-                        <div>
-                            <div className='text-3xl overflow-ellipsis'>{meal.mealName}</div>
-                            <div className='overflow-ellipsis'>A very delicious burger</div>
+                    <div className='flex flex-row justify-between h-full mb-3'>
+                        <div className='flex flex-col justify-between content-between h-full pr-3'>
+                            <div className='text-3xl overflow-hidden'>{meal.mealName}</div>
+                            <div className='w-52 h-6 truncate'>{meal.mealDescription}</div>
                         </div>
                         <img
                             className='w-20 h-20 object-cover object-center rounded-md'
