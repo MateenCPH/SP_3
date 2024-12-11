@@ -17,7 +17,7 @@ export const mealImages = {
   "Spaghetti Bolognese":
     "https://img.freepik.com/premium-photo/plate-spaghetti-with-berries-spoon-table_1169327-189589.jpg",
   "Grilled Salmon":
-    "https://img.freepik.com/premium-photo/grilled-salmon-fish-piece-with-salt-spices-vegetables-ai-generated_1020331-18951.jpg",
+    "https://img.freepik.com/premium-photo/grilled-salmon-fillet-fresh-salad-natural-refreshment-generated-by-ai_24640-87959.jpg",
 };
 
 //Function to get image for meal name

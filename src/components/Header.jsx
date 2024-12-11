@@ -1,7 +1,7 @@
 import SearchLogo from "../assets/SearchLogo";
 import UserLogo from "../assets/UserLogo";
 import { Link } from "react-router-dom";
-import Searchbar from "./searchbar/Searchbar";
+import Searchbar from "./Searchbar";
 import HomeLogo from "../assets/HomeLogo";
 import TerminalIcon from "../assets/TerminalIcon";
 import facade from "../util/apiFacade";

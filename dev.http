@@ -13,11 +13,26 @@ POST https://meals.nerdshub.dk/api/auth/login
 
 {
 
-    "username": "user",
+    "username": "chad",
     "password": "123"
 
 }
 
 ###
+GET https://meals.nerdshub.dk/protected/user_demo/
+Accept: application/json
+Authorization: Bearer {jwt_token}
+###
+
+POST https://meals.nerdshub.dk/auth/chad/addrole/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTYW5kZXIiLCJzdWIiOiJjaGFkIiwiZXhwIjoxNzMzOTIyMDk5LCJyb2xlcyI6InVzZXIiLCJ1c2VybmFtZSI6ImNoYWQifQ.8bzPucEH8tVoFGpNbGV2QgO90CO1G6d9-OrnjWzCfIY
+
+
+{
+    "role": "admin"
+}
+###
+
 
 

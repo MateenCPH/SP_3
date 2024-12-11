@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import "./Searchbar.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import SearchLogo from "../../assets/SearchLogo";
-import Rating from "../../assets/Rating";
+import SearchLogo from "../assets/SearchLogo";
+import Rating from "../assets/Rating";
+import { getImageForMeal } from "./MealsCard";
 
 const Container = styled.div`
   display: flex;
@@ -12,9 +12,6 @@ const Container = styled.div`
 
 const InputContainer = styled.div`
   display: flex;
-  max-width: 500px;
-  width: 100%;
-  min-width: 400px;
   align-items: center;
   gap: 8px;
   padding: 5px;
@@ -26,6 +23,15 @@ const Input = styled.input`
   border: none;
   height: 20px;
   padding: 5px;
+  width: 100%;
+
+  @media (min-width: 400px) {
+    width: 400px;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 
   &:focus {
     outline: none;
@@ -37,10 +43,11 @@ const SuggestionsList = styled.ul`
   overflow-y: scroll;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-top: 7px;
   position: absolute;
   background-color: #fff;
 `;
+
 const ListItem = styled.li`
   display: flex;
   align-items: start;
@@ -147,8 +154,8 @@ function Searchbar({ meals }) {
                   state={{ meal: meal }}
                 >
                   <ListItem onClick={handleMealClick}>
-                    <img
-                      src="https://img.freepik.com/free-photo/exploding-burger-with-vegetables-melted-cheese-black-background-generative-ai_157027-1751.jpg"
+                    <img className=""
+                      src={getImageForMeal(meal.mealName)}
                       alt={`${meal.mealName} ${meal.mealDescription}`}
                     />
                     <Span>

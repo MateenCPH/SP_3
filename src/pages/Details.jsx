@@ -33,7 +33,7 @@ function Details() {
             </div>
             <div className="flex justify-center">
               <img
-                className="md:w-[30vw] h-[30vh] object-cover"
+                className="md:w-[60vw] h-[30vh] object-cover rounded-sm"
                 src={getImageForMeal(meal.mealName)}
                 alt="Image of the food"
               />
