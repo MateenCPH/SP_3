@@ -55,7 +55,7 @@ function App() {
             <Route path="/" element={<Homepage meals={meals} />} />
             <Route path="/details/:id" element={<Details />} />
             <Route path="/login" element={<Login login={login} loggedIn={loggedIn} />} />
-            <Route path="/admin" element={<Admin meals={meals} />} />
+            <Route path="/admin" element={<Admin meals={meals} loggedIn={loggedIn}/>} />
             <Route path="/signup" element={<Signup />} />
             <Route path="*" element={<Error404NotFound />} />
           </Routes>
