@@ -26,38 +26,31 @@ export const getImageForMeal = (name) =>
   "https://img.freepik.com/premium-photo/healthy-food-dish-photography-delicious-nutritious-meals-created-with-generative-ai_115122-5751.jpg";
 
 const MealsCard = ({ meal }) => {
-  return meal ? (
-    <>
-      <Link to={`/details/${meal.mealId}`} state={{ meal: meal }}>
-        <div className="flex flex-col justify-between rounded-md bg-Secondary text-black w-80 h-40 p-3">
-          <div className="flex flex-row justify-between">
-            <div>
-              <div className="text-3xl overflow-ellipsis">{meal.mealName}</div>
-              <div className="overflow-ellipsis">A very delicious burger</div>
-            </div>
-            <img
-              className="w-20 h-20 object-cover object-center rounded-md"
-              src={getImageForMeal(meal.mealName)}
-              alt={meal.mealName}
-            />
-          </div>
-          <div className="flex flex-row justify-between">
-            <div className="flex flex-row gap-2">
-              <Timer />
-              {meal.mealPrepTime} min
-            </div>
 
-            <div className="flex flex-row gap-2">
-              <Rating />
-              {meal.mealRating}
-            </div>
-          </div>
-        </div>
-      </Link>
-    </>
-  ) : (
-    <div className="flex flex-col justify-between rounded-md bg-Secondary text-black w-80 h-40 p-3"></div>
-  );
-};
-
+    return ( 
+        meal ?
+        <>
+            <Link to={`/details/${meal.mealId}`} state={{ meal: meal }}>
+                <div className="flex flex-col justify-between rounded-md bg-Secondary text-black w-80 h-40 p-3">
+                    <div className='flex flex-row justify-between h-full mb-3'>
+                        <div className='flex flex-col justify-between content-between h-full pr-3'>
+                            <div className='text-3xl overflow-hidden'>{meal.mealName}</div>
+                            <div className='w-52 h-6 truncate'>{meal.mealDescription}</div>
+                        </div>
+                        <img
+                            src={getImageForMeal(meal.mealName)}
+                            alt={meal.mealName} />
+                    </div>
+                    <div className='flex flex-row justify-between'>
+                        <div className='flex flex-row gap-2'><Timer />{meal.mealPrepTime} min</div>
+                        
+                        <div className='flex flex-row gap-2'><Rating />{meal.mealRating}</div>
+                    </div>
+                </div>
+            </Link>
+        </>
+        : <div className="flex flex-col justify-between rounded-md bg-Secondary text-black w-80 h-40 p-3"></div>
+     ) 
+}
+ 
 export default MealsCard;

@@ -51,6 +51,19 @@ const login = (user, password) => {
         .then(res => {setToken(res.token) })
  }
 
+ const register = (username, password) => {
+  const options = makeOptions("POST", false, { username: username, password: password });
+  return fetch(BASE_URL + REGISTER_ENDPOINT, options)
+    .then(handleHttpErrors)
+    .then(res => { 
+      console.log('User registered successfully'); 
+      return res;
+    })
+    .catch(err => {
+      console.error("Registration failed:", err);
+      throw err;
+    });
+}
 
 
 const makeOptions= (method,addToken,body) =>{
@@ -76,7 +89,8 @@ return {
     loggedIn,
     login,
     logout,
-    hasUserAccess
+    hasUserAccess,
+    register
 }
 }
 const facade = apiFacade();
