@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import "./Searchbar.css";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import SearchLogo from "../../assets/SearchLogo";
+import Rating from "../../assets/Rating";
 
 const Container = styled.div`
   display: flex;
@@ -9,10 +11,11 @@ const Container = styled.div`
 `;
 
 const InputContainer = styled.div`
-  width: 100%;
   display: flex;
+  max-width: 500px;
+  width: 100%;
+  min-width: 400px;
   align-items: center;
-  flex-wrap: wrap;
   gap: 8px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -51,15 +54,27 @@ const ListItem = styled.li`
   }
 
   img {
-  margin-top: 8px;
-  height: 20px;
-    }
+    margin-top: 8px;
+    height: 20px;
   }
 `;
 
 const MealName = styled.p`
   font-size: 1rem;
   font-weight: bold;
+`;
+
+const MealDescription = styled.p``;
+
+const MealRating = styled.p`
+  display: flex;
+  flex-direction: row;
+  color: #f09136;
+`;
+
+const Span = styled.span`
+  display: flex;
+  flex-direction: column;
 `;
 
 function Searchbar({ meals }) {
@@ -114,6 +129,7 @@ function Searchbar({ meals }) {
     <Container ref={searchBoxRef}>
       <InputContainer>
         {/* input field with search suggestions */}
+        <SearchLogo />
         <div>
           <Input
             type="text"
@@ -123,20 +139,28 @@ function Searchbar({ meals }) {
           />
           {/* Search suggestions  */}
           <SuggestionsList>
-            {filteredMeals && filteredMeals.map((meal) => (
-              <Link key={meal.mealId} to={`/details/${meal.mealId}`} state={{ meal: meal }}>
-                <ListItem  onClick={handleMealClick}>
-                  <img
-                    src="https://img.freepik.com/free-photo/exploding-burger-with-vegetables-melted-cheese-black-background-generative-ai_157027-1751.jpg"
-                    alt={`${meal.mealName} ${meal.mealDescription}`}
-                  />
-                  <span>
-                    <MealName>{meal.mealName}</MealName>
-                    <p>{meal.mealDescription}</p>
-                  </span>
-                </ListItem>
-              </Link>
-            ))}
+            {filteredMeals &&
+              filteredMeals.map((meal) => (
+                <Link
+                  key={meal.mealId}
+                  to={`/details/${meal.mealId}`}
+                  state={{ meal: meal }}
+                >
+                  <ListItem onClick={handleMealClick}>
+                    <img
+                      src="https://img.freepik.com/free-photo/exploding-burger-with-vegetables-melted-cheese-black-background-generative-ai_157027-1751.jpg"
+                      alt={`${meal.mealName} ${meal.mealDescription}`}
+                    />
+                    <Span>
+                      <MealName>{meal.mealName}</MealName>
+                      <MealDescription>{meal.mealDescription}</MealDescription>
+                      <MealRating>
+                        {meal.mealRating} <Rating />
+                      </MealRating>
+                    </Span>
+                  </ListItem>
+                </Link>
+              ))}
           </SuggestionsList>
         </div>
       </InputContainer>

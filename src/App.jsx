@@ -11,6 +11,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Searchbar from "./components/searchbar/Searchbar";
 import Header from "./components/Header";
+import Signup from "./pages/Signup";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -29,8 +30,13 @@ function App() {
         alert("Invalid credentials. Please try again.");
       });
   };
-
-
+  
+  const logout = () => {
+    facade.logout();
+    setLoggedIn(false);
+    setUsername("");
+  };
+  
   useEffect(() => {
     fetchData("https://meals.nerdshub.dk/api/meals", setMeals, "GET");
   }, []);
@@ -39,12 +45,13 @@ function App() {
     <>
       <Router>
         <div className="max-w-[63rem] m-auto p-2">
-          <Header meals={meals} loggedIn={loggedIn} username={username} />
+          <Header meals={meals} loggedIn={loggedIn} username={username} logout={logout} />
           <Routes>
             <Route path="/" element={<Homepage meals={meals} />} />
             <Route path="/details/:id" element={<Details />} />
             <Route path="/login" element={<Login login={login} loggedIn={loggedIn} />} />
             <Route path="/admin" element={<Admin meals={meals} />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </div>
       </Router>
