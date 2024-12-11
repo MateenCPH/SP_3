@@ -11,6 +11,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Searchbar from "./components/searchbar/Searchbar";
 import Header from "./components/Header";
+import Signup from "./pages/Signup";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -54,6 +55,7 @@ function App() {
               element={<Login login={login} loggedIn={loggedIn} />}
             />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </div>
       </Router>
