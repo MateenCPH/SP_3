@@ -37,7 +37,7 @@ const MealsCard = ({ meal }) => {
                             <div className='text-3xl overflow-hidden'>{meal.mealName}</div>
                             <div className='w-52 h-6 truncate'>{meal.mealDescription}</div>
                         </div>
-                        <img
+                        <img className="w-20 h-20 object-cover object-center rounded-md"
                             src={getImageForMeal(meal.mealName)}
                             alt={meal.mealName} />
                     </div>
