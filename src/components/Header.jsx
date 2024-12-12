@@ -17,12 +17,19 @@ function Header({ loggedIn, username, meals, logout }) {
         {/* User section */}
         <div className="flex items-center">
           {loggedIn ? (
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold">{username}</span>
-              <UserLogo />
+            <div className="flex items-center gap-4">
+              <div className="flex flex-row justify-center items-center">
+                <span className="text-sm font-bold mr-2">{username}</span>
+                <UserLogo />
+              </div>
+              {facade.hasUserAccess("admin", loggedIn) && (
+                <Link to="/admin">
+                  <TerminalIcon />
+                </Link>
+              )}
               <button
                 onClick={logout}
-                className="ml-4 px-2 py-1 bg-Theme text-Primary rounded hover:bg-red-700"
+                className="px-2 py-1 bg-Theme text-Primary rounded hover:bg-red-700"
               >
                 Logout
               </button>
@@ -30,11 +37,6 @@ function Header({ loggedIn, username, meals, logout }) {
           ) : (
             <Link to="/login">
               <UserLogo />
-            </Link>
-          )}
-          {facade.hasUserAccess("admin", loggedIn) && (
-            <Link to="/admin">
-              <TerminalIcon />
             </Link>
           )}
         </div>
