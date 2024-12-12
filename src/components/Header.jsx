@@ -1,4 +1,3 @@
-import SearchLogo from "../assets/SearchLogo";
 import UserLogo from "../assets/UserLogo";
 import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
@@ -34,9 +33,9 @@ function Header({ loggedIn, username, meals, logout }) {
             </Link>
           )}
           {facade.hasUserAccess("admin", loggedIn) && (
-              <Link to="/admin">
-                <TerminalIcon />
-              </Link>
+            <Link to="/admin">
+              <TerminalIcon />
+            </Link>
           )}
         </div>
       </header>

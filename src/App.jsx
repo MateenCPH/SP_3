@@ -16,9 +16,11 @@ import ErrorPage from "./pages/ErrorPage";
 import ErrorBanner from "./components/ErrorBanner";
 
 function App() {
+  const [meals, setMeals] = useState([]);
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  const [meals, setMeals] = useState([]);
+  
   const [errorMessage, setErrorMessage] = useState(null);
 
   const login = (user, pass) => {
@@ -59,7 +61,7 @@ function App() {
            </div>
           <Routes>
             <Route path="/" element={<Homepage meals={meals} />} errorElement={<ErrorPage />}/>
-            <Route path="/details/:id" element={<Details />} />
+            <Route path="/details/:id" element={<Details setErrorMessage={setErrorMessage} />} />
             <Route path="/login" element={<Login login={login} loggedIn={loggedIn} />} />
             <Route path="/admin" element={<Admin meals={meals} loggedIn={loggedIn}/>} />
             <Route path="/signup" element={<Signup />} />

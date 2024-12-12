@@ -1,8 +1,8 @@
 function ErrorBanner({ errorMessage }) {
   return (
     errorMessage && (
-      <div>
-        <strong>Error:</strong> {errorMessage}
+      <div className="bg-Secondary mt-5 p-1">
+        <strong className="ml-1">Error:</strong> {errorMessage}
       </div>
     )
   );
