@@ -44,7 +44,7 @@ function App() {
   
   useEffect(() => {
     fetchData("https://meals.nerdshub.dk/api/meals", setMeals, "GET");
-  }, []);
+  }, [setMeals]);
 
   return (
     <>
@@ -63,7 +63,7 @@ function App() {
             <Route path="/" element={<Homepage meals={meals} />} errorElement={<ErrorPage />}/>
             <Route path="/details/:id" element={<Details setErrorMessage={setErrorMessage} />} />
             <Route path="/login" element={<Login login={login} loggedIn={loggedIn} />} />
-            <Route path="/admin" element={<Admin meals={meals} loggedIn={loggedIn}/>} />
+            <Route path="/admin" element={<Admin meals={meals} setMeals={setMeals} loggedIn={loggedIn}/>} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
         </div>

@@ -6,16 +6,19 @@ import React, { useState, useEffect } from 'react';
 import DeleteFunc from "../components/Admin/DeleteFunc";
 
 
-const Admin = ({ meals, loggedIn }) => {
+const Admin = ({ meals, setMeals, loggedIn }) => {
   const [selectCategory, setSelectCategory] = useState("meals");
   const users = [{id:1, username:"chad", role:"admin"}, {id:2, username:"gary", role:"user"}];
   const navi = useNavigate(); 
   
+
+
+
   const handleCategory = (e) => {
     setSelectCategory(e.target.value);
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     function checkAccess(){
       if(facade.hasUserAccess("admin", loggedIn)){
         return true;
@@ -24,7 +27,7 @@ const Admin = ({ meals, loggedIn }) => {
       }
     }
     checkAccess();
-  }, [loggedIn]);
+  }, [loggedIn]); */
 
   return (
     <>
@@ -57,7 +60,7 @@ const Admin = ({ meals, loggedIn }) => {
                       <td className=" p-2">{meal.mealName}</td>
                       <td className="text-center p-2">link</td>
                       <td className="text-center p-2"><button><Pensil /></button></td>
-                      <td className="text-center p-2"><DeleteFunc /></td>
+                      <td className="text-center p-2"><DeleteFunc mealId={meal.mealId} meals={meals} setMeals={ setMeals }/></td>
                     </tr>
                   ))}
                 </tbody>
