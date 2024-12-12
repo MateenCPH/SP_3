@@ -38,8 +38,8 @@ function Details() {
     <>
       <h1 className="text-center text-4xl my-8">{meal.mealName}</h1>
 
-      <main className="flex justify-around text-center flex-col md:flex-row md:text-left bg-Secondary w-[100%] h-[80vh] p-4">
-        <div className="text-2xl mb-8">
+      <main className="flex justify-around text-center flex-col-reverse md:flex-row md:text-left bg-Secondary w-[100%] min-h-[80vh] p-4">
+        <div className="text-2xl mb-8 md:max-w-[50vw]">
           <h2>Description</h2>
           <p className="text-base">{meal.mealDescription}</p>
           <br />
@@ -59,8 +59,7 @@ function Details() {
           <p className="text-base">{meal.mealInstructions}</p>
         </div>
         <div className="flex justify-center">
-          <img
-            className="md:w-[60vw] h-[30vh] object-cover rounded-sm"
+          <img className="md:max-w-[30vw] h-[30vh] object-cover rounded-md my-4"
             src={getImageForMeal(meal.mealName)}
             alt="Image of the food"
           />
