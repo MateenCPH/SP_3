@@ -2,15 +2,17 @@ import { useLocation, useParams } from "react-router-dom";
 import { getImageForMeal } from "../components/MealsCard";
 import { useState, useEffect } from "react";
 import { fetchData } from "../util/persistence";
-import Error404NotFound from "./Error404NotFound";
+import ErrorPage from "./ErrorPage";
+import LoadingScreen from "../components/LoadingScreen";
 
 function Details() {
   const { id } = useParams();
   const location = useLocation();
-  const [meal, setMeal] = useState(location.state?.meal || null);
+  const [meal, setMeal] = useState(location.state?.meal);
+  const [loading, setLoading] = useState(!meal);
 
   useEffect(() => {
-    if (!meal) {
+    if (meal === undefined) {
       fetchData(
         "https://meals.nerdshub.dk/api/meals",
         (data) => {
@@ -20,11 +22,18 @@ function Details() {
         "GET"
       );
     }
-  }, [meal]);
+  }, [meal, id]);
 
-  if (!meal) {
-    return <Error404NotFound />;
+  if (meal === undefined) {
+    // Data is loading
+    return <div>Loading...</div>;
   }
+
+  if (meal === null) {
+    // Meal not found
+    return <ErrorPage />;
+  }
+
   return (
     <>
       <h1 className="text-center text-4xl my-8">{meal.mealName}</h1>

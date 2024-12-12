@@ -11,12 +11,15 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Header from "./components/Header";
 import Signup from "./pages/Signup";
-import Error404NotFound from "./pages/Error404NotFound";
+
+import ErrorPage from "./pages/ErrorPage";
+import ErrorBanner from "./components/ErrorBanner";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [meals, setMeals] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const login = (user, pass) => {
     facade
@@ -51,13 +54,15 @@ function App() {
             username={username}
             logout={logout}
           />
+          <div>
+           {errorMessage && <ErrorBanner errorMessage={errorMessage} />}
+           </div>
           <Routes>
-            <Route path="/" element={<Homepage meals={meals} />} />
+            <Route path="/" element={<Homepage meals={meals} />} errorElement={<ErrorPage />}/>
             <Route path="/details/:id" element={<Details />} />
             <Route path="/login" element={<Login login={login} loggedIn={loggedIn} />} />
             <Route path="/admin" element={<Admin meals={meals} loggedIn={loggedIn}/>} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="*" element={<Error404NotFound />} />
           </Routes>
         </div>
       </Router>
