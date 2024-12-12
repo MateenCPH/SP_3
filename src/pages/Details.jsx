@@ -59,7 +59,7 @@ function Details() {
           <p className="text-base">{meal.mealInstructions}</p>
         </div>
         <div className="flex justify-center">
-          <img className="md:max-w-[30vw] h-[30vh] object-cover rounded-md my-4"
+          <img className="w-60 h-60 object-cover rounded-md my-4"
             src={getImageForMeal(meal.mealName)}
             alt="Image of the food"
           />
