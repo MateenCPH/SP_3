@@ -1,5 +1,5 @@
 import Pensil from "../assets/icons/Pensil";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import facade from "../util/apiFacade";
 
 import React, { useState, useEffect } from "react";
@@ -27,10 +27,8 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
         "https://meals.nerdshub.dk/api/users",
         options
       );
-      console.log(response);
       const data = await response.json();
       setUsers(data);
-      console.log(users);
     };
     fetchUsers();
   }, []);
@@ -48,6 +46,10 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
       mealDescription: meal.mealDescription,
     });
     setIsModalOpen(true);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Optional for smooth scrolling
+    });
   };
 
   const closeEditModal = () => {
@@ -74,8 +76,8 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
       });
   };
 
-  /*
-     useEffect(() => {
+  
+  useEffect(() => {
     function checkAccess(){
       if(facade.hasUserAccess("admin", loggedIn)){
         return true;
@@ -84,7 +86,7 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
       }
     }
     checkAccess();
-  }, [loggedIn]); */
+  }, [loggedIn]);
 
   return (
     <>
@@ -101,82 +103,6 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
         <option value="meals">Meals</option>
         <option value="users">Users</option>
       </select>
-
-      <main className="">
-        <div className=" my-3 rounded-md w-full bg-Theme p-2">
-          <table className="w-full bg-Theme">
-            {selectCategory === "meals" ? (
-              <>
-                <thead className="rounded-md">
-                  <tr className="bg-Primary rounded-md gap-3">
-                    <th className="text-left p-2">ID</th>
-                    <th className="text-left p-2">Meal</th>
-                    <th className=" p-2">Page</th>
-                    <th className=" p-2">Edit</th>
-                    <th className=" p-2">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {meals &&
-                    meals.map((meal) => (
-                      <tr
-                        key={meal.mealId}
-                        className="gap-4 bg-Secondary p-4 m-4 even:bg-Primary"
-                      >
-                        <td className=" p-2">{meal.mealId}</td>
-                        <td className=" p-2">{meal.mealName}</td>
-                        <td className="text-center p-2">link</td>
-                        <td className="text-center p-2">
-                          <button onClick={() => openEditModal(meal)} >
-                            <Pensil />
-                          </button>
-                        </td>
-                        <td className="text-center p-2">
-                          <DeleteFunc
-                            mealId={meal.mealId}
-                            meals={meals}
-                            setMeals={setMeals}
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </>
-            ) : (
-              <>
-                <thead className="rounded-md">
-                  <tr className="bg-Primary rounded-md gap-3">
-                    <th className="text-left p-2">Username</th>
-                    <th className="text-left p-2">Role</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {users &&
-                    users.map((user, index) => (
-                      <tr
-                        key={index}
-                        className="gap-4 bg-Secondary p-4 m-4 even:bg-Primary"
-                      >
-                        <td className="p-2">{user.userName}</td>
-
-                        {/* Check if roles exists before mapping */}
-                        {user.roles && user.roles.length > 0 ? (
-                          <td className="p-2">
-                            {user.roles
-                              .map((role, index) => role.name)
-                              .join(", ")}
-                          </td>
-                        ) : (
-                          <td className="p-2">No roles</td>
-                        )}                      
-                      </tr>
-                    ))}
-                </tbody>
-              </>
-            )}
-          </table>
-        </div>
-      </main>
 
       {/* --------------------------------- EDIT ----------------------- */}
       {isModalOpen && (
@@ -236,6 +162,86 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
           </div>
         </div>
       )}
+
+      <main className="">
+        <div className=" my-3 rounded-md w-full bg-Theme p-2">
+          <table className="w-full bg-Theme">
+            {selectCategory === "meals" ? (
+              <>
+                <thead className="rounded-md">
+                  <tr className="bg-Primary rounded-md gap-3">
+                    <th className="text-left p-2">ID</th>
+                    <th className="text-left p-2">Meal</th>
+                    <th className="text-left p-2">Page</th>
+                    <th className=" p-2">Edit</th>
+                    <th className=" p-2">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {meals &&
+                    meals.map((meal) => (
+                      <tr
+                        key={meal.mealId}
+                        className="gap-4 bg-Secondary p-4 m-4 even:bg-Primary"
+                      >
+                        <td className=" p-2">{meal.mealId}</td>
+                        <td className=" p-2">{meal.mealName}</td>
+                        <Link to={`/details/${meal.mealId}`}>
+                          <td className="p-2 hover:text-Theme">Link</td>
+                        </Link>
+                        <td className="text-center p-2">
+                          <button onClick={() => openEditModal(meal)} >
+                            <Pensil />
+                          </button>
+                        </td>
+                        <td className="text-center p-2">
+                          <DeleteFunc
+                            mealId={meal.mealId}
+                            meals={meals}
+                            setMeals={setMeals}
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </>
+            ) : (
+              <>
+                <thead className="rounded-md">
+                  <tr className="bg-Primary rounded-md gap-3">
+                    <th className="text-left p-2">Username</th>
+                    <th className="text-left p-2">Role</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {users &&
+                    users.map((user, index) => (
+                      <tr
+                        key={index}
+                        className="gap-4 bg-Secondary p-4 m-4 even:bg-Primary"
+                      >
+                        <td className="p-2">{user.userName}</td>
+
+                        {/* Check if roles exists before mapping */}
+                        {user.roles && user.roles.length > 0 ? (
+                          <td className="p-2">
+                            {user.roles
+                              .map((role, index) => role.name)
+                              .join(", ")}
+                          </td>
+                        ) : (
+                          <td className="p-2">No roles</td>
+                        )}                      
+                      </tr>
+                    ))}
+                </tbody>
+              </>
+            )}
+          </table>
+        </div>
+      </main>
+
+      
     </>
   );
 };
