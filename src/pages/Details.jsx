@@ -5,6 +5,10 @@ import { fetchData } from "../util/persistence";
 import ErrorPage from "./ErrorPage";
 import LoadingScreen from "../components/LoadingScreen";
 
+import TimerIcon from "../assets/Timer";
+import RatingIcon from "../assets/Rating";
+
+
 function Details() {
   const { id } = useParams();
   const location = useLocation();
@@ -34,12 +38,15 @@ function Details() {
     return <ErrorPage />;
   }
 
+  console.log(meal);
+  
+
   return (
     <>
       <h1 className="text-center text-4xl my-8">{meal.mealName}</h1>
 
-      <main className="flex justify-around text-center flex-col-reverse md:flex-row md:text-left bg-Secondary w-[100%] min-h-[80vh] p-4">
-        <div className="text-2xl mb-8 md:max-w-[50vw]">
+      <main className="flex justify-around text-center flex-col-reverse md:flex-row md:text-left bg-Secondary w-[100%] min-h-[80vh] p-4 pt-8">
+        <div className="text-2xl my-8 md:max-w-96">
           <h2>Description</h2>
           <p className="text-base">{meal.mealDescription}</p>
           <br />
@@ -58,11 +65,20 @@ function Details() {
           <h2>Instructions</h2>
           <p className="text-base">{meal.mealInstructions}</p>
         </div>
-        <div className="flex justify-center">
-          <img className="w-60 h-60 object-cover rounded-md my-4"
+
+        <div className="flex flex-col w-60 min-h-60  my-6 self-center md:self-start">
+          <img className="object-cover rounded-md h-60 mb-4"
             src={getImageForMeal(meal.mealName)}
             alt="Image of the food"
           />
+          <div className="flex flex-row justify-between">
+            <span className="flex flex-row ">
+              <TimerIcon /> <p className="ml-2">{meal.mealPrepTime} min</p>
+            </span>
+            <span className="flex flex-row ">
+              <RatingIcon/> <p className="ml-2">{meal.mealRating} / 5</p>
+            </span>
+          </div>
         </div>
       </main>
     </>
