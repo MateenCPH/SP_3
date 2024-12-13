@@ -20,7 +20,7 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  // const users = [{id:1, username:"chad", role:"admin"}, {id:2, username:"gary", role:"user"}];
+  
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -117,7 +117,7 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
                         <td className=" p-2">{meal.mealName}</td>
                         <td className="text-center p-2">link</td>
                         <td className="text-center p-2">
-                          <button>
+                          <button onClick={() => openEditModal(meal)} >
                             <Pensil />
                           </button>
                         </td>
