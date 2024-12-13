@@ -172,7 +172,6 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
                   <tr className="bg-Primary rounded-md gap-3">
                     <th className="text-left p-2">ID</th>
                     <th className="text-left p-2">Meal</th>
-                    <th className="text-left p-2">Page</th>
                     <th className=" p-2">Edit</th>
                     <th className=" p-2">Delete</th>
                   </tr>
@@ -184,10 +183,9 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
                         key={meal.mealId}
                         className="gap-4 bg-Secondary p-4 m-4 even:bg-Primary"
                       >
-                        <td className=" p-2">{meal.mealId}</td>
-                        <td className=" p-2">{meal.mealName}</td>
+                        <td className="p-2">{meal.mealId}</td>
                         <Link to={`/details/${meal.mealId}`}>
-                          <td className="p-2 hover:text-Theme">Link</td>
+                          <td className="p-2 hover:text-Theme underline">{meal.mealName}</td>
                         </Link>
                         <td className="text-center p-2">
                           <button onClick={() => openEditModal(meal)} >
