@@ -1,4 +1,4 @@
-import TrashCan from "../../assets/TrashCan";
+import TrashCan from "../../assets/icons/TrashCan";
 
 const DeleteFunc = ({meals, setMeals, mealId}) => {
     const URL = "https://meals.nerdshub.dk/api/meals";

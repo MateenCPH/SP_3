@@ -5,8 +5,8 @@ import { fetchData } from "../util/persistence";
 import ErrorPage from "./ErrorPage";
 import LoadingScreen from "../components/LoadingScreen";
 
-import TimerIcon from "../assets/Timer";
-import RatingIcon from "../assets/Rating";
+import TimerIcon from "../assets/icons/Timer";
+import RatingIcon from "../assets/icons/Rating";
 
 
 function Details() {

@@ -1,4 +1,4 @@
-import Pensil from "../assets/Pensil";
+import Pensil from "../assets/icons/Pensil";
 import { useNavigate } from "react-router-dom";
 import facade from "../util/apiFacade";
 

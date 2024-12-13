@@ -1,9 +1,11 @@
-import UserLogo from "../assets/UserLogo";
 import { Link } from "react-router-dom";
-import Searchbar from "./Searchbar";
-import HomeLogo from "../assets/HomeLogo";
-import TerminalIcon from "../assets/TerminalIcon";
 import facade from "../util/apiFacade";
+
+import Searchbar from "./Searchbar";
+
+import HomeLogo from "../assets/icons/HomeLogo";
+import UserLogo from "../assets/icons/UserLogo";
+import TerminalIcon from "../assets/icons/TerminalIcon";
 
 function Header({ loggedIn, username, meals, logout }) {
   return (
