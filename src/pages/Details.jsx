@@ -7,13 +7,13 @@ import LoadingScreen from "../components/LoadingScreen";
 
 import TimerIcon from "../assets/icons/Timer";
 import RatingIcon from "../assets/icons/Rating";
+import MealInstructions from "../components/MealInstructions";
 
 
 function Details() {
   const { id } = useParams();
   const location = useLocation();
   const [meal, setMeal] = useState(location.state?.meal);
-  const [loading, setLoading] = useState(!meal);
 
   useEffect(() => {
     if (meal === undefined) {
@@ -63,7 +63,7 @@ function Details() {
           <br />
 
           <h2>Instructions</h2>
-          <p className="text-base">{meal.mealInstructions}</p>
+          <MealInstructions instructions={meal.mealInstructions}/>
         </div>
 
         <div className="flex flex-col w-60 min-h-60  my-6 self-center md:self-start">
