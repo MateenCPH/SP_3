@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import SearchLogo from "../assets/SearchLogo";
-import Rating from "../assets/Rating";
+import SearchLogo from "../assets/icons/SearchLogo";
+import Rating from "../assets/icons/Rating";
 import { getImageForMeal } from "./MealsCard";
 
 const Container = styled.div`

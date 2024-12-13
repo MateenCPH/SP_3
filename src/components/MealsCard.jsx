@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Timer from "../assets/Timer.jsx";
-import Rating from "../assets/Rating.jsx";
+import Timer from "../assets/icons/Timer.jsx";
+import Rating from "../assets/icons/Rating.jsx";
 
 //Small in-app database for images
 export const mealImages = {

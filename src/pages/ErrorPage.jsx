@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import QuestionMark from "../assets/QuestionMark";
+import QuestionMark from "../assets/icons/QuestionMark";
 
 function ErrorPage() {
   const location = useLocation();
