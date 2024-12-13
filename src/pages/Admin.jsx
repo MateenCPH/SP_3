@@ -20,8 +20,6 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  
-
   useEffect(() => {
     const fetchUsers = async () => {
       const options = facade.makeOptions("GET", true);
@@ -75,6 +73,18 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
         console.error("Failed to save item:", err);
       });
   };
+
+  /*
+     useEffect(() => {
+    function checkAccess(){
+      if(facade.hasUserAccess("admin", loggedIn)){
+        return true;
+      } else{
+        return navi(`/`, {replace: true})
+      }
+    }
+    checkAccess();
+  }, [loggedIn]); */
 
   return (
     <>
