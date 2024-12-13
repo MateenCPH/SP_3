@@ -65,6 +65,7 @@ function App() {
             <Route path="/login" element={<Login login={login} loggedIn={loggedIn} />} />
             <Route path="/admin" element={<Admin meals={meals} setMeals={setMeals} loggedIn={loggedIn}/>} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
       </Router>
