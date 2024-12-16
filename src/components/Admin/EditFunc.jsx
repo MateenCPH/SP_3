@@ -7,7 +7,7 @@ const EditFunc = ({ meal, setMeals }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     mealName: meal.mealName,
-    mealDescription: meal.mealDescription,
+    mealDescription: meal.mealDescription,  
   });
 
   const openEditModal = () => {
@@ -80,6 +80,8 @@ const EditFunc = ({ meal, setMeals }) => {
                   required
                 />
               </div>
+
+              {/* Meal Description */}
               <div className="mb-4">
                 <label htmlFor="mealDescription" className="block mb-2">
                   Meal Description:
@@ -97,6 +99,9 @@ const EditFunc = ({ meal, setMeals }) => {
                   required
                 />
               </div>
+
+
+              {/* Save and Cancel Buttons */}
               <div className="flex justify-end gap-4">
                 <button
                   type="button"

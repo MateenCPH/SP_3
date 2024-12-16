@@ -77,8 +77,8 @@ const Button = styled.button`
 `;
 
 const ErrorMessage = styled.p`
-  color: #f09136; /* Red color for error */
-  background-color: #f5f5f5; /* Light red background */
+  color: #f09136; 
+  background-color: #f5f5f5; 
   padding: 10px;
   border-radius: 5px;
   font-weight: bold;
