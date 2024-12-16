@@ -77,8 +77,8 @@ const Button = styled.button`
 `;
 
 const ErrorMessage = styled.p`
-  color: #f09136; /* Red color for error */
-  background-color: #f5f5f5; /* Light red background */
+  color: #f09136; 
+  background-color: #f5f5f5; 
   padding: 10px;
   border-radius: 5px;
   font-weight: bold;
@@ -101,8 +101,8 @@ function Signup() {
   const performRegister = (evt) => {
     evt.preventDefault();
 
-    if (registerCredentials.username.length < 2 || registerCredentials.password.length < 2) {
-        setErrorMessage("Username and password must be at least 2 characters long.");
+    if (registerCredentials.username.length <= 2 || registerCredentials.password.length <= 4) {
+        setErrorMessage("Username has to be 2 characters long and password has to be 4 or more characters long  .");
         return; // Prevent form submission
       }
       

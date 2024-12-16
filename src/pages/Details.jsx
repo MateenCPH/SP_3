@@ -40,8 +40,6 @@ function Details() {
     // Meal not found
     return <ErrorPage />;
   }
-
-  console.log(meal);
   
 
   return (
@@ -58,7 +56,7 @@ function Details() {
 
           {meal &&
             meal.ingredients.map((ingredients) => (
-              <p className=" text-base" key={ingredients.id}>
+              <p className=" text-base mb-2" key={ingredients.id}>
                 {ingredients.name} - {ingredients.quantity}
               </p>
             ))}

@@ -6,15 +6,17 @@ function MealInstructions({ instructions }) {
   const steps = instructions.split(/(?=\d+\.\s)/).filter(Boolean);
 
   return (
-    <div>
-      <ol>
-        {steps.map((step, index) => (
-          <li key={index} className="text-base">
-            {step}
-          </li>
-        ))}
-      </ol>
-    </div>
+    <>
+      <div>
+        <ol>
+          {steps.map((step, index) => (
+              <li key={index} className="text-base">
+                <p className="my-2">{step}</p>
+              </li>
+          ))}
+        </ol>
+      </div>
+    </>
   );
 }
 
