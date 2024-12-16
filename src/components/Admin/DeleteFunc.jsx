@@ -13,7 +13,7 @@ const DeleteFunc = ({meals, setMeals, mealId}) => {
         })
         .then(() => {
             setMeals((prevMeals) =>
-                prevMeals.filter((meal) => meal.id !== id)
+                prevMeals.filter((meal) => meal.mealId !== id)
             );
         })
         .catch((err) => {
