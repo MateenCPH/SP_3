@@ -10,7 +10,6 @@ const Container = styled.div`
   height: 80vh;
   align-items: center;
   justify-content: center;
-  
 `;
 
 const LeftSide = styled.div`
@@ -53,7 +52,7 @@ const Input = styled.input`
   font-size: 16px;
 `;
 
- const Button = styled.button`
+const Button = styled.button`
   width: 100%;
   padding: 0.5rem;
   background-color: #f09136;
@@ -111,36 +110,38 @@ function Login({ login, loggedIn }) {
 
   return (
     <>
-    <Container>
-      <LeftSide>
-        <img src="src/assets/Logo.png" alt="Logo" />
-      </LeftSide>
-      <RightSide>
-        <Title>Welcome to SMM-Cooking</Title>
-        <Form onSubmit={performLogin}>
-          <Input
-            placeholder="User Name"
-            id="username"
-            onChange={onChange}
-            value={loginCredentials.username}
-          />
-          <Input
-            placeholder="Password"
-            id="password"
-            type="password"
-            onChange={onChange}
-            value={loginCredentials.password}
-          />
-          <RememberMe>
-            <input type="checkbox" id="rememberMe" />
-            <label htmlFor="rememberMe">Remember me</label>
-          </RememberMe>
-          <Button type="submit">Login</Button>
-        </Form><br/>
-        <p>Don't have an account?</p>
-        <SignUpLink href="/signup"> Sign up</SignUpLink>
-      </RightSide>
-    </Container>
+      <Container>
+        <LeftSide>
+          <img className="rounded-md" src="src/assets/Logo.png" alt="Logo" />
+        </LeftSide>
+        <RightSide>
+          <Title>Welcome to SMM-Cooking</Title>
+          <Form onSubmit={performLogin}>
+            <Input
+              placeholder="User Name"
+              type="text"
+              id="username"
+              onChange={onChange}
+              value={loginCredentials.username}
+            />
+            <Input
+              placeholder="Password"
+              type="password"
+              id="password"
+              onChange={onChange}
+              value={loginCredentials.password}
+            />
+            <RememberMe>
+              <input type="checkbox" id="rememberMe" />
+              <label htmlFor="rememberMe">Remember me</label>
+            </RememberMe>
+            <Button type="submit">Login</Button>
+          </Form>
+          <br />
+          <p>Don't have an account?</p>
+          <SignUpLink href="/signup"> Sign up</SignUpLink>
+        </RightSide>
+      </Container>
     </>
   );
 }

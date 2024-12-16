@@ -102,7 +102,7 @@ function Signup() {
     evt.preventDefault();
 
     if (registerCredentials.username.length <= 2 || registerCredentials.password.length <= 4) {
-        setErrorMessage("Username has to be 2 characters long and password has to be 4 or more characters long  .");
+        setErrorMessage("Username has to be 2 characters long and password has to be 4 or more characters long.");
         return; // Prevent form submission
       }
       
