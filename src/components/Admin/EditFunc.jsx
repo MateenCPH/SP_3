@@ -58,7 +58,8 @@ const EditFunc = ({ meal, setMeals }) => {
           ></div>
 
           {/* Modal Content */}
-          <div className="fixed top-10 left-1/2 transform -translate-x-1/2 z-50 w-11/12 max-w-xl bg-white p-4 rounded-md shadow-lg">
+          <div className="fixed inset-0 z-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-md shadow-lg w-full max-w-lg">
             <h2 className="text-2xl mb-4">Edit Meal</h2>
 
             <form onSubmit={saveItem}>
@@ -115,6 +116,7 @@ const EditFunc = ({ meal, setMeals }) => {
                 </button>
               </div>
             </form>
+          </div>
           </div>
         </>
       )}
