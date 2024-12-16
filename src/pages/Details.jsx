@@ -19,7 +19,7 @@ function Details() {
   /* const { meal } = location.state || {}; */
 
   useEffect(() => {
-    if (meal === undefined) {
+    
       fetchData(
         "https://meals.nerdshub.dk/api/meals",
         (data) => {
@@ -28,8 +28,8 @@ function Details() {
         },
         "GET"
       );
-    }
-  }, [meal, id]);
+    
+  }, [id]);
 
   if (meal === undefined) {
     // Data is loading

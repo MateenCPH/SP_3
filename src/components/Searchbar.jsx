@@ -152,7 +152,6 @@ function Searchbar({ meals }) {
                 <Link
                   key={meal.mealId}
                   to={`/details/${meal.mealId}`}
-                  state={{ meal: meal }}
                 >
                   <ListItem onClick={handleMealClick}>
                     <img className=""
