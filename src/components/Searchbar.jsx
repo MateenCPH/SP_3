@@ -100,7 +100,7 @@ function Searchbar({ meals }) {
     const handleClickOutside = (e) => {
       if (
         searchBoxRef.current &&
-        !searchBoxRef.current.contains(event.target)
+        !searchBoxRef.current.contains(e.target)
       ) {
         setSearchTerm("");
         setFilteredMeals([]);
@@ -148,6 +148,7 @@ function Searchbar({ meals }) {
           <SuggestionsList>
             {filteredMeals &&
               filteredMeals.map((meal) => (
+                
                 <Link
                   key={meal.mealId}
                   to={`/details/${meal.mealId}`}

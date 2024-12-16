@@ -13,7 +13,10 @@ import MealInstructions from "../components/MealInstructions";
 function Details() {
   const { id } = useParams();
   const location = useLocation();
+
   const [meal, setMeal] = useState(location.state?.meal);
+
+  /* const { meal } = location.state || {}; */
 
   useEffect(() => {
     if (meal === undefined) {

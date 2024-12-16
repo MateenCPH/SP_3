@@ -27,7 +27,7 @@ export const getImageForMeal = (name) =>
 
 const MealsCard = ({ meal }) => {
 
-    return ( 
+    return (
         meal ?
         <>
             <Link to={`/details/${meal.mealId}`} state={{ meal: meal }}>
