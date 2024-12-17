@@ -79,6 +79,19 @@ const updateMeal = (mealId, updatedMeal) => {
     });
 }
 
+// ------ Create Meal method --------
+const createMeal = (mealData) => {
+  const options = makeOptions("POST", true, mealData); // Authenticated request with meal data
+  return fetch(`${BASE_URL}meals`, options) // POST to meals endpoint
+    .then(handleHttpErrors)
+    .then((res) => res) // Return response to handle in CreateFunc
+    .catch((err) => {
+      console.error("Error creating meal:", err);
+      throw err; // Rethrow error for error handling in component
+    });
+};
+
+
 
 const makeOptions= (method,addToken,body) =>{
   var opts = {
@@ -105,7 +118,8 @@ return {
     logout,
     hasUserAccess,
     register,
-    updateMeal
+    updateMeal,
+    createMeal
 }
 }
 const facade = apiFacade();

@@ -6,6 +6,7 @@ import Searchbar from "./Searchbar";
 import HomeLogo from "../assets/icons/HomeLogo";
 import UserLogo from "../assets/icons/UserLogo";
 import TerminalIcon from "../assets/icons/TerminalIcon";
+import LogoutLogo from "../assets/icons/LogoutLogo";
 
 function Header({ loggedIn, username, meals, logout }) {
   return (
@@ -33,7 +34,8 @@ function Header({ loggedIn, username, meals, logout }) {
                 onClick={logout}
                 className="px-2 py-1 bg-Theme text-Primary rounded hover:bg-red-700"
               >
-                Logout
+                <LogoutLogo/>
+                
               </button>
             </div>
           ) : (

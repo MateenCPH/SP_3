@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import facade from "../util/apiFacade";
 import DeleteFunc from "../components/Admin/DeleteFunc";
 import EditFunc from "../components/Admin/EditFunc";
+import CreateFunc from "../components/Admin/CreateFunc";
 
 const Admin = ({ meals, setMeals, loggedIn }) => {
   const [selectCategory, setSelectCategory] = useState("meals");
@@ -12,7 +13,10 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       const options = facade.makeOptions("GET", true);
-      const response = await fetch("https://meals.nerdshub.dk/api/users", options);
+      const response = await fetch(
+        "https://meals.nerdshub.dk/api/users",
+        options
+      );
       const data = await response.json();
       setUsers(data);
     };
@@ -33,16 +37,21 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
   return (
     <>
       <h1 className="text-center text-4xl my-8">Admin Panel</h1>
+      <div className="flex justify-between items-center my-4">
+        {/* Dropdown */}
+        <select
+          onChange={handleCategory}
+          name="display"
+          id="selectCategory"
+          className="bg-Theme p-2 text-Primary text-center rounded-md w-52"
+        >
+          <option value="meals">Meals</option>
+          <option value="users">Users</option>
+        </select>
 
-      <select
-        onChange={handleCategory}
-        name="display"
-        id="selectCategory"
-        className="bg-Theme p-2 text-Primary text-center rounded-md w-52"
-      >
-        <option value="meals">Meals</option>
-        <option value="users">Users</option>
-      </select>
+        {/* Create Button (Aligned to the right) */}
+        <CreateFunc setMeals={setMeals} />
+      </div>
 
       <main>
         <div className="my-3 rounded-md w-full bg-Theme p-2">
@@ -73,7 +82,11 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
                         <EditFunc meal={meal} setMeals={setMeals} />
                       </td>
                       <td className="text-center p-2">
-                        <DeleteFunc mealId={meal.mealId} meals={meals} setMeals={setMeals} />
+                        <DeleteFunc
+                          mealId={meal.mealId}
+                          meals={meals}
+                          setMeals={setMeals}
+                        />
                       </td>
                     </tr>
                   ))}
