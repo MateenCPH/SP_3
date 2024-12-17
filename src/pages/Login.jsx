@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
 import styled from "styled-components";
-import Header from "../components/Header";
+import facade from "../util/apiFacade";
+import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+
 
 // STYLES
 const Container = styled.div`
@@ -97,16 +99,33 @@ const ErrorMessage = styled.p`
   font-size: 16px;
 `;
 
-function Login({ login, loggedIn, errorMessage, setErrorMessage }) {
+function Login({ errorMessage, setErrorMessage, loggedIn, setLoggedIn, setUsername }) {
   const [loginCredentials, setLoginCredentials] = useState({
     username: "",
     password: "",
   });
 
+  const navigate = useNavigate();
+
+  const login = (user, pass) => {
+    facade
+      .login(user, pass)
+      .then(() => {
+        setLoggedIn;
+        setUsername(user);
+        setErrorMessage("")
+        navigate("/")
+      })
+      .catch((err) => {
+        console.error("Login failed:", err);
+        const errorMsg = err.message || "Invalid credentials. Please try again."
+        setErrorMessage(errorMsg);
+      });
+  };
+
   const performLogin = (evt) => {
     evt.preventDefault();
     login(loginCredentials.username, loginCredentials.password);
-    
   };
 
   const onChange = (evt) => {
@@ -115,11 +134,6 @@ function Login({ login, loggedIn, errorMessage, setErrorMessage }) {
       [evt.target.id]: evt.target.value,
     });
   };
-
-  // Redirect to homepage if already logged in
-  if (loggedIn) {
-    return <Navigate to="/" />;
-  }
 
   return (
     <>

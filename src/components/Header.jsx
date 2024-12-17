@@ -8,7 +8,12 @@ import UserLogo from "../assets/icons/UserLogo";
 import TerminalIcon from "../assets/icons/TerminalIcon";
 import LogoutLogo from "../assets/icons/LogoutLogo";
 
-function Header({ loggedIn, username, meals, logout }) {
+function Header({ loggedIn, username, meals }) {
+  
+  const logout = () => {
+    facade.logout();
+  };
+
   return (
     <>
       <header className="my-2 flex flex-row justify-between items-center">
@@ -34,8 +39,7 @@ function Header({ loggedIn, username, meals, logout }) {
                 onClick={logout}
                 className="px-2 py-1 bg-Theme text-Primary rounded hover:bg-red-700"
               >
-                <LogoutLogo/>
-                
+                <LogoutLogo />
               </button>
             </div>
           ) : (
