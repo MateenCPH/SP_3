@@ -8,6 +8,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import TimerIcon from "../assets/icons/Timer";
 import RatingIcon from "../assets/icons/Rating";
 import MealInstructions from "../components/MealInstructions";
+import RatingModal from "../components/Admin/RatingModal";
 
 
 function Details() {
@@ -77,7 +78,8 @@ function Details() {
               <TimerIcon /> <p className="ml-2">{meal.mealPrepTime} min</p>
             </span>
             <span className="flex flex-row ">
-              <RatingIcon/> <p className="ml-2">{meal.mealRating} / 5</p>
+              {/* <RatingIcon/> <p className="ml-2">{meal.mealRating} / 5</p> */}
+              <RatingModal mealRating={meal.mealRating} />
             </span>
           </div>
         </div>
