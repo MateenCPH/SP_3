@@ -8,17 +8,27 @@ import UserLogo from "../assets/icons/UserLogo";
 import TerminalIcon from "../assets/icons/TerminalIcon";
 import LogoutLogo from "../assets/icons/LogoutLogo";
 
-function Header({ loggedIn, username, meals }) {
-  
+function Header({
+  loggedIn,
+  setLoggedIn,
+  username,
+  setUsername,
+  setErrorMessage,
+  meals,
+}) {
   const logout = () => {
     facade.logout();
+    setLoggedIn(false);
+    setUsername("");
   };
 
   return (
     <>
       <header className="my-2 flex flex-row justify-between items-center">
         <Link to="/">
-          <HomeLogo />
+          <button onClick={() => setErrorMessage("")}>
+            <HomeLogo />
+          </button>
         </Link>
         <Searchbar meals={meals} />
 
@@ -44,7 +54,9 @@ function Header({ loggedIn, username, meals }) {
             </div>
           ) : (
             <Link to="/login">
-              <UserLogo />
+              <button onClick={() => setErrorMessage("")}>
+                <UserLogo />
+              </button>
             </Link>
           )}
         </div>

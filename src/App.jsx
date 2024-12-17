@@ -33,7 +33,10 @@ function App() {
           <Header
             meals={meals}
             loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
+            setUsername={setUsername}
             username={username}
+            setErrorMessage={setErrorMessage}
           />
           <Routes>
             <Route path="/" element={<Homepage meals={meals} />} errorElement={<ErrorPage />}/>

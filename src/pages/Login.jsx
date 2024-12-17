@@ -111,7 +111,7 @@ function Login({ errorMessage, setErrorMessage, loggedIn, setLoggedIn, setUserna
     facade
       .login(user, pass)
       .then(() => {
-        setLoggedIn;
+        setLoggedIn(true);
         setUsername(user);
         setErrorMessage("")
         navigate("/")
