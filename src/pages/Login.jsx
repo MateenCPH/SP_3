@@ -97,27 +97,16 @@ const ErrorMessage = styled.p`
   font-size: 16px;
 `;
 
-function Login({ login, loggedIn }) {
+function Login({ login, loggedIn, errorMessage, setErrorMessage }) {
   const [loginCredentials, setLoginCredentials] = useState({
     username: "",
     password: "",
   });
-  const [errorMessage, setErrorMessage] = useState(""); // State to track error messages
 
   const performLogin = (evt) => {
     evt.preventDefault();
-    login(loginCredentials.username, loginCredentials.password)
-      .then(() => {
-        setErrorMessage(""); // Clear any existing errors on successful login
-      })
-      .catch((err) => {
-        // Ensure the error message displays properly
-        if (err.message) {
-          setErrorMessage(err.message);
-        } else {
-          setErrorMessage("An unexpected error occurred. Please try again.");
-        }
-      });
+    login(loginCredentials.username, loginCredentials.password);
+    
   };
 
   const onChange = (evt) => {

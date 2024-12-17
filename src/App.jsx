@@ -29,10 +29,12 @@ function App() {
       .then(() => {
         setLoggedIn(true);
         setUsername(user);
+        setErrorMessage("")
       })
       .catch((err) => {
         console.error("Login failed:", err);
-        alert("Invalid credentials. Please try again.");
+        const errorMsg = err.message || "Invalid credentials. Please try again."
+        setErrorMessage(errorMsg);
       });
   };
   
@@ -56,13 +58,10 @@ function App() {
             username={username}
             logout={logout}
           />
-          <div>
-           {errorMessage && <ErrorBanner errorMessage={errorMessage} />}
-           </div>
           <Routes>
             <Route path="/" element={<Homepage meals={meals} />} errorElement={<ErrorPage />}/>
             <Route path="/details/:id" element={<Details setErrorMessage={setErrorMessage} />} />
-            <Route path="/login" element={<Login login={login} loggedIn={loggedIn} />} />
+            <Route path="/login" element={<Login login={login} loggedIn={loggedIn} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />} />
             <Route path="/admin" element={<Admin meals={meals} setMeals={setMeals} loggedIn={loggedIn}/>} />
             <Route path="/signup" element={<Signup />} />
             <Route path="*" element={<ErrorPage />} />
