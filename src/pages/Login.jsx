@@ -85,15 +85,39 @@ const SignUpLink = styled.a`
   }
 `;
 
+const ErrorMessage = styled.p`
+  color: #f09136;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  width: 80%;
+  margin-bottom: 1.5rem;
+  font-size: 16px;
+`;
+
 function Login({ login, loggedIn }) {
   const [loginCredentials, setLoginCredentials] = useState({
     username: "",
     password: "",
   });
+  const [errorMessage, setErrorMessage] = useState(""); // State to track error messages
 
   const performLogin = (evt) => {
     evt.preventDefault();
-    login(loginCredentials.username, loginCredentials.password);
+    login(loginCredentials.username, loginCredentials.password)
+      .then(() => {
+        setErrorMessage(""); // Clear any existing errors on successful login
+      })
+      .catch((err) => {
+        // Ensure the error message displays properly
+        if (err.message) {
+          setErrorMessage(err.message);
+        } else {
+          setErrorMessage("An unexpected error occurred. Please try again.");
+        }
+      });
   };
 
   const onChange = (evt) => {
@@ -116,6 +140,7 @@ function Login({ login, loggedIn }) {
         </LeftSide>
         <RightSide>
           <Title>Welcome to SMM-Cooking</Title>
+          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           <Form onSubmit={performLogin}>
             <Input
               placeholder="User Name"
