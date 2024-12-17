@@ -34,7 +34,7 @@ const RatingModal = ({ mealRating }) => {
                                     const ratingValue = i + 1;
                                     return (
                                         
-                                        <label key={i}>
+                                        <label key={i} className='hover:scale-125 transition-transform'>
                                             <input type="radio" name="rating" value={ratingValue} onClick={() => (setRating(ratingValue)) } className='hidden' />
                                             <RatingIcon 
                                                 color={ratingValue <= rating ? "#F09136" : "#e2e2e2"} 
