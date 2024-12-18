@@ -139,7 +139,7 @@ function Login({ errorMessage, setErrorMessage, loggedIn, setLoggedIn, setUserna
     <>
       <Container>
         <LeftSide>
-          <img className="rounded-md" src="src/assets/Logo.png" alt="Logo" />
+          <img className="rounded-md" src="public/Logo.png" alt="Logo" />
         </LeftSide>
         <RightSide>
           <Title>Welcome to SMM-Cooking</Title>
