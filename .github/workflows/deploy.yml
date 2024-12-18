@@ -2,7 +2,7 @@ name: Deploy Frontend to DigitalOcean
 
 on:
   push:
-    branches: [main] # Trigger on direct pushes to the main branch
+    branches: [main] # Trigger on direct pushes to the main branche
   pull_request:
     branches: [main] # Trigger when a pull request targeting main is merged/closed
 
