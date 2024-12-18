@@ -73,11 +73,11 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
                       className="gap-4 bg-Secondary p-4 m-4 even:bg-Primary"
                     >
                       <td className="p-2">{meal.mealId}</td>
-                      <Link to={`/details/${meal.mealId}`}>
                         <td className="p-2 hover:text-Theme underline">
-                          {meal.mealName}
+                          <Link to={`/details/${meal.mealId}`}>
+                            {meal.mealName}
+                          </Link>
                         </td>
-                      </Link>
                       <td className="text-center p-2">
                         <EditFunc meal={meal} setMeals={setMeals} />
                       </td>

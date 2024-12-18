@@ -117,7 +117,7 @@ function Login({ errorMessage, setErrorMessage, loggedIn, setLoggedIn, setUserna
         navigate("/")
       })
       .catch((err) => {
-        console.error("Login failed:", err);
+        /* console.error("Login failed:", err); */
         const errorMsg = err.message || "Invalid credentials. Please try again."
         setErrorMessage(errorMsg);
       });

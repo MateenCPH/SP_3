@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminSafe from "../../assets/AdminSafe";
+import AdminSafe from "../../assets/icons/AdminSafe";
 import Pensil from "../../assets/icons/Pensil";
 import facade from "../../util/apiFacade";
 
