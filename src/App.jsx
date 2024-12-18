@@ -43,7 +43,7 @@ function App() {
             <Route path="/details/:id" element={<Details setErrorMessage={setErrorMessage} />} />
             <Route path="/login" element={<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUsername={setUsername} errorMessage={errorMessage} setErrorMessage={setErrorMessage} />} />
             <Route path="/admin" element={<Admin meals={meals} setMeals={setMeals} loggedIn={loggedIn}/>} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/signup" element={<Signup errorMessage={errorMessage} setErrorMessage={setErrorMessage} />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>

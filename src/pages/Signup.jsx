@@ -89,13 +89,12 @@ const ErrorMessage = styled.p`
 `;
 
 
-function Signup() {
+function Signup({errorMessage, setErrorMessage}) {
   const [registerCredentials, setRegisterCredentials] = useState({
     username: "",
     password: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState("");
   const navi = useNavigate(); 
 
   const performRegister = (evt) => {

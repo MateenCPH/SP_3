@@ -24,6 +24,7 @@ function Header({
 
   return (
     <>
+    {/* Home logo section */}
       <header className="my-2 flex flex-row justify-between items-center">
         <Link to="/">
           <button onClick={() => setErrorMessage("")}>
