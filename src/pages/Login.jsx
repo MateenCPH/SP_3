@@ -3,6 +3,7 @@ import styled from "styled-components";
 import facade from "../util/apiFacade";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import Logo from "../assets/Logo.png"
 
 
 // STYLES
@@ -139,7 +140,7 @@ function Login({ errorMessage, setErrorMessage, loggedIn, setLoggedIn, setUserna
     <>
       <Container>
         <LeftSide>
-          <img className="rounded-md" src="src/assets/Logo.png" alt="Logo" />
+          <img className="rounded-md" src={Logo} />
         </LeftSide>
         <RightSide>
           <Title>Welcome to SMM-Cooking</Title>

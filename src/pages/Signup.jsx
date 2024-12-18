@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
 import facade from "../util/apiFacade"; // Make sure to import facade
+import Logo from "../assets/Logo.png"
 
 // STYLES
 const Container = styled.div`
@@ -124,7 +125,7 @@ function Signup({errorMessage, setErrorMessage}) {
   return (
     <Container>
       <LeftSide>
-        <img src="src/assets/Logo.png" alt="Logo" />
+        <img className="rounded-md" src={Logo} />
       </LeftSide>
       <RightSide>
         <Title>Create a New Account</Title>
