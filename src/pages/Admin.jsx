@@ -45,8 +45,8 @@ const Admin = ({ meals, setMeals, loggedIn }) => {
           id="selectCategory"
           className="bg-Theme p-2 text-Primary text-center rounded-md w-52"
         >
-          <option value="meals">Meals</option>
-          <option value="users">Users</option>
+          <option className="bg-gray-800" value="meals">Meals</option>
+          <option className="bg-gray-800" value="users">Users</option>
         </select>
 
         {/* Create Button (Aligned to the right) */}
