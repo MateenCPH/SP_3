@@ -145,6 +145,8 @@ function Login({ errorMessage, setErrorMessage, loggedIn, setLoggedIn, setUserna
         <RightSide>
           <Title>Welcome to SMM-Cooking</Title>
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+
+         {/* NOT A HOF onChange and persomLogin but uses data form one another*/}
           <Form onSubmit={performLogin}>
             <Input
               placeholder="User Name"

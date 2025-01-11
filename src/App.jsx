@@ -23,11 +23,14 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   
   useEffect(() => {
+
+    // fetchData is a HOF bec it taks a callback (setMeals)
     fetchData("https://meals.nerdshub.dk/api/meals", setMeals, "GET");
+
   }, [setMeals]);
 
   return (
-    <>
+    <> 
       <Router>
         <div className="max-w-[63rem] m-auto p-2">
           <Header
