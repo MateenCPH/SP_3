@@ -10,7 +10,6 @@ const RatingModal = ({ mealRating }) => {
         mealRating = rating;
     }
 
-    
     return ( 
         <div >
             <span className="flex flex-row"  onClick={() => setIsModalOpen(true)}>

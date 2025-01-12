@@ -6,21 +6,6 @@ function ErrorPage() {
   const location = useLocation();
   const [msg, setMsg] = useState();
 
-  const handleClick = () => {
-    setMsg(
-      <>
-        <div className="flex flex-row">
-          <p className="mt-5 text-xl">
-            Dude, why did you click the gay button?
-          </p>
-          <button className="bg-Theme p-2 rounded-md mt-4">
-            Click this button instead
-          </button>
-        </div>
-      </>
-    );
-  };
-
   return (
     <>
       <div className="flex flex-col place-items-center m-10">
@@ -28,17 +13,14 @@ function ErrorPage() {
           <h1 className="text-5xl mr-2">404 Not Found</h1>
           <QuestionMark className="w-10 h-10" />
         </div>
-        <p className="mt-5 text-xl">
+        <p className="mt-5 text-xl mb-4">
           Sorry, the page: {location.pathname} you are looking for does not
           exist{" "}
         </p>
-
-        <button onClick={handleClick} className="bg-Theme p-2 rounded-md mt-4">
-          Gay button
-        </button>
-
         <Link to={"/"}>
-          <span>{msg}</span>
+          <button className="bg-Theme p-2 rounded-md ">
+            Return to Homepage
+          </button>
         </Link>
       </div>
     </>

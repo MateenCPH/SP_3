@@ -91,8 +91,6 @@ const createMeal = (mealData) => {
     });
 };
 
-
-
 const makeOptions= (method,addToken,body) =>{
   var opts = {
     method: method,
