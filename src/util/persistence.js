@@ -21,9 +21,9 @@ export function fetchData(url, callback, method, body) {
     .then((data) => callback(data))
     .catch((err) => {
       if (err.status) {
-        err.fullError.then((e) => console.log(e.detail));
+        err.fullError.then(/* (e) => console.log(e.detail) */);
       } else {
-        console.log("Network error");
+        /* console.log("Network error"); */
       }
     });
 }
