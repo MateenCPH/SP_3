@@ -58,26 +58,31 @@ Show and explain the essential building blocks like BrowserRouter, Routes, Route
   React-Router solves this by loading everything once and routing in the browser, reducing server load and speeding up navigation.
 */
 
-<Router>
-  {" "}
-  {/* BrowserRouter is the listener */}
+<Router> {/* BrowserRouter = Router*/}
+{/* BrowserRouter is the GPS for the app, keeping track of the current location*/}
   <Routes>
-    {" "}
-    {/* Finding the correct route based on the current URL */}
+    {/* Route is the destination; this will show the Homepage component when the path is '/' */}
     <Route
-      path="/"
-      element={<Homepage meals={meals} />}
-      errorElement={<ErrorPage />}
-    />{" "}
-    {/* What happens */}
+      path="/" 
+      element={<Homepage meals={meals} />}  // The content shown at this route
+      errorElement={<ErrorPage />}  // The fallback page if an error occurs while loading the route
+    />
+    {/* Example of another route */}
+    <Route 
+      path="/about" 
+      element={<About />} 
+    />
+    {/* You can add more routes as needed */}
   </Routes>
-</Router>;
+</Router>
 
-// Path: URL pattern matcher
-// ELEMENT: The element that needs to load when the path is matched
-// ERRORELEMENT: What to display if something goes wrong
-// NAVIGATE: Programmatically navigate, e.g., login
-// OUTLET: Show nested routes
+
+
+//BrowserRouter: The GPS that tracks your location.
+//Routes: The paths users can take.
+//Route: The destination shown when a path is visited.
+//element: The content that appears at a route.
+// useNavigate: Helps you programmatically change the route.
 
 // --------------------------------------------------- Question 2 -----------------------------------------------------------------------
 /*
@@ -139,7 +144,7 @@ Describe the purpose of flexbox and grid in CSS, and show some examples of what 
 
 
 Flexbox: Align items in a row/column (e.g., navbar, buttons, cards).
-Flexbox is great for aligning items in a row or column and for distributing space within a container.
+Flexbox is great for aligning items in rows/ column and for distributing space within a container.
 
 
 Grid: For complex layouts, like dashboards.
@@ -173,6 +178,7 @@ What is the purpose of the package.json file and what can you do with it?
 
   - Contains dependencies, configurations, and scripts/tasks for the project.
   - Similar to Maven’s pom.xml, but focused mainly on JavaScript-related tasks.
+
 */
 
 // ---------------------------------------------------
@@ -286,6 +292,8 @@ Show the difference between synchronous and asynchronous programming and how doe
   Synchronous: Executes tasks one by one.
   Asynchronous: Tasks can run in the background, allowing the rest of the program to continue.
 
+  ADMIN- pages: 
+
 Example of Async/Await in React (fetching data):
 useEffect(() => {
 const fetchUsers = async () => {
@@ -335,8 +343,8 @@ Show and explain conceptually a typical flow of using JWTs for user authenticati
 
   JWT Flow Diagram:
   +-------------------+    +--------------------+    +-------------------+
-  | User Navigates to  |    | User Enters        |    | Form Submission   |
-  | Login Page         |    | Credentials        |    | (performLogin)     |
+  | User Navigates to  | --> | User Enters        | -->| Form Submission   |
+  | Login Page         |     | Credentials        |    | (performLogin)     |
   +-------------------+    +--------------------+    +-------------------+
              |                      |                       |
              v                      v                       v
@@ -503,33 +511,32 @@ Show examples of how to handle form submit events
 Security/Routing/Styling
 Describe and show the login process using JWT
 
++------------------------+      +-------------------------+      +--------------------------+
+| 1. User Enters Username |      | 2. User Submits Form    |      | 3. performLogin() Function|
+|    and Password        |      |    (Calls performLogin) |      |    Calls login() from     |
++------------------------+      +-------------------------+      |    Facade                |
+        |                               |                          +--------------------------+
+        v                               v                                       |
++------------------------+      +-------------------------+                     v
+| 4. login() Calls API   |      | 5. API Call to Backend  |        +----------------------------+
+|    (POST /auth/login)  |      |    (Sends username &    |        | 6. Backend Verifies        |
++------------------------+      |    password for auth)   |        |    Credentials             |
+        |                               |                          +----------------------------+
+        v                               v                                       |
++------------------------+      +-------------------------+                     v
+| 7. JWT Returned if     |      | 8. Save JWT in Local    |        +----------------------------+
+|    Credentials are     |      |    Storage              |        | 9. Redirect to Homepage    |
+|    Valid               |      +-------------------------+        |    (Navigate)              |
++------------------------+                      |                     +----------------------------+
+        |                                      |
+        v                                      v
++------------------------+               +--------------------------+
+| 10. If Error: Display  |               | 11. Display Error        |
+|     Error Message      |               |     Message (e.g.,       |
+|     (Invalid           |               |     Invalid Credentials) |
+|     Credentials)       |               +--------------------------+
++------------------------+
 
-Login Process Flow:
-  +-------------------+    +--------------------+    +-------------------+
-  | User Enters       |    | User Submits Form  |    | performLogin()     |
-  | Username and      |    | (calls performLogin)|    | Function Calls     |
-  | Password          |    | Function            |    | login() from Facade|
-  +-------------------+    +--------------------+    +-------------------+
-             |                      |                       |
-             v                      v                       v
-  +-------------------+    +--------------------+    +-------------------+
-  | login() Calls     |    | API Call to Backend|    | Backend Verifies   |
-  | API (POST /auth/login)|  | (send username and  |    | Credentials        |
-  +-------------------+    | password for auth)  |    +-------------------+
-             |                      |                       |
-             v                      v                       v
-  +-------------------+    +--------------------+    +-------------------+
-  | JWT Returned if   |    | Save JWT in Local  |    | Redirect to       |
-  | Credentials are   |    | Storage            |    | Homepage (navigate)|
-  | Valid             |    |                    |    +-------------------+
-  +-------------------+    +--------------------+               |
-             |                                                |
-             v                                                v
-  +-------------------+                                    +-------------------+
-  | If Error: Display |                                    | Display Error     |
-  | Error Message     |                                    | Message (e.g.,     |
-  | (Invalid Credentials)|                                  | Invalid Credentials)|
-  +-------------------+                                    +-------------------+
 
 
 */
@@ -558,6 +565,8 @@ The number "7" is added to the display element's innerHTML.
       </div>
 
     </div>
+
+    
 // ---------------------------------------------------
 
 /*
@@ -965,8 +974,26 @@ Login Process Flow for our program:
 
 
 
+/*
 
-
+  +------------------------+     +---------------------------+     +-----------------------------+
+  | Push Code to GitHub     |     | GitHub Actions Pipeline    |     | Run `npm run dev` to create  |
+  | (Trigger Pipeline)      |---->| (Build, Test, Deploy)      |---->| ready-to-use files (HTML,    |
+  +------------------------+     +---------------------------+     | CSS, JavaScript)             |
+           |                             |                          +-----------------------------+
+           v                             v                                      |
+  +------------------------+     +---------------------------+     +-----------------------------+
+  | Docker Packages the    |     | Docker Uploads the App    |     | WatchTower Pulls Latest Image |
+  | App                    |---->| to Docker Hub             |---->| from Docker Hub              |
+  +------------------------+     +---------------------------+     +-----------------------------+
+           |                             |                          |
+           v                             v                          v
+  +------------------------+     +---------------------------+     +-----------------------------+
+  | Caddy Serves the App   |     | Handles HTTPS & Static    |     | Application Ready to Serve  |
+  | (Handles Static Files  |---->| Files                     |---->| Users with Latest Version   |
+  | and HTTPS)             |     +---------------------------+     +-----------------------------+
+  +------------------------+        
+*/
 
 
 

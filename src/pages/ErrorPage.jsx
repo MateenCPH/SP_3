@@ -11,10 +11,10 @@ function ErrorPage() {
       <>
         <div className="flex flex-row">
           <p className="mt-5 text-xl">
-            Dude, why did you click the gay button?
+           Click this button to go back to Homepage
           </p>
           <button className="bg-Theme p-2 rounded-md mt-4">
-            Click this button instead
+            Home
           </button>
         </div>
       </>
@@ -34,7 +34,7 @@ function ErrorPage() {
         </p>
 
         <button onClick={handleClick} className="bg-Theme p-2 rounded-md mt-4">
-          Gay button
+          Infomation
         </button>
 
         <Link to={"/"}>

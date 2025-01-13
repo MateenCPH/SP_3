@@ -15,15 +15,14 @@ import Signup from "./pages/Signup";
 import ErrorPage from "./pages/ErrorPage";
 
 function App() {
-  const [meals, setMeals] = useState([]);
 
+  const [meals, setMeals] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   
   const [errorMessage, setErrorMessage] = useState(null);
   
   useEffect(() => {
-
     // fetchData is a HOF bec it taks a callback (setMeals)
     fetchData("https://meals.nerdshub.dk/api/meals", setMeals, "GET");
 
